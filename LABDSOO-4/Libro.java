@@ -14,4 +14,40 @@ public class Libro {
     public void setAutor(String autor) { this.autor = autor; }
     public void setISBN(int ISBN) { this.ISBN = ISBN; }
     public void setDisponibilidad(boolean disponibilidad) { this.disponibilidad = disponibilidad; }
+
+    //disponibilidad
+    public void estaDisponible(){
+        if (disponibilidad) {
+            System.out.println("El libro está disponible.");
+        } else {
+            System.out.println("El libro no está disponible.");
+        }
+    }
+
+    //constructor
+    public Libro(String titulo, String autor, int ISBN, boolean disponibilidad) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.ISBN = ISBN;
+        this.disponibilidad = disponibilidad;
+    }
+
+    //sobrecarga de constructor
+    public Libro(String titulo, String autor, int ISBN) {
+        this.titulo = titulo;
+        this.autor = autor;
+        this.ISBN = ISBN;
+        this.disponibilidad = true; // Por defecto, el libro está disponible
+    }
+
+    //toString
+    @Override
+    public String toString() {
+        return "Libro{" +
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", ISBN=" + ISBN +
+                ", disponibilidad=" + (disponibilidad ? "Disponible" : "No Disponible") +
+                '}';
+    }
 }
