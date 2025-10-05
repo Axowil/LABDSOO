@@ -1,4 +1,3 @@
-import java.time.LocalDate;
 import java.util.*;
 
 public class Usuario {
@@ -26,25 +25,30 @@ public class Usuario {
         System.out.println("Ingrese el ISBNL del libro que desea prestarse");
         int isbn = sc.nextInt();
         sc.nextLine();
-        if(verificarDisponibilidad(isbn, libros)) 
-            return new Prestamo(isbn,dni,LocalDate.now());
-        else {
+        return TomarPrestamo(libros, isbn);
+    }
+    public Prestamo TomarPrestamo(ArrayList<Libro> libros, int isbn) {
+        Libro libro = buscarLibro(libros, isbn);
+        if( libro != null && libro.estaDisponible()) {
+            libro.cantidad--;
+            return new Prestamo(libro, this);
+        } else {
             System.out.println("El libro no esta disponible");
             return null;
         }
     }
     public void DevolverLibro(ArrayList<Prestamo> prestamos){
         for (Prestamo prestamo : prestamos) {
-            if(prestamo.getDniPrestamista() == dni) {
+            if(prestamo.getPrestatario() == this) {
                 prestamo.cancelado();
                 break;
             }
         }
     }
-    public boolean verificarDisponibilidad(int isbn, ArrayList<Libro> libros){
+    public Libro buscarLibro(ArrayList<Libro> libros, int isbn) {
         for (Libro libro : libros) {
-            if (libro.getISBN() == isbn) return libro.isDisponibilidad();
+            if(libro.getISBN() == isbn) return libro;
         }
-        return false;
+        return null;
     }
 }
