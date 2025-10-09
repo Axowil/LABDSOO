@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.*;
-
 public class Usuario {
         private String nombres;
         private String apellidos;
@@ -9,11 +8,9 @@ public class Usuario {
     public String getNombres() {
         return nombres;
     }
-
     public String getApellidos() {
         return apellidos;
     }
-
     public int getDni() {
         return dni;
     }
