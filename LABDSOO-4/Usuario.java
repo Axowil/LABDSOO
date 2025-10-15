@@ -1,10 +1,15 @@
 import java.time.LocalDate;
 import java.util.*;
 public class Usuario {
-        private String nombres;
-        private String apellidos;
-        private int dni ;
+    private String nombres;
+    private String apellidos;
+    private int dni ;
 
+    public Usuario(String nombres, String apellidos, int dni) {
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.dni = dni;
+    }
     public String getNombres() {
         return nombres;
     }
@@ -44,4 +49,14 @@ public class Usuario {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombres='" + nombres + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", dni=" + dni +
+                '}';
+    }
+    
 }

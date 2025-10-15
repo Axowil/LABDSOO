@@ -6,6 +6,7 @@ public class Sistema {
     public Sistema() {
         this.libros = new ArrayList<>();
         this.usuarios = new ArrayList<>();
+        this.Prestamos = new ArrayList<>();
     }
     public void registrarLibro(Libro libro) {
         libros.add(libro);
@@ -29,7 +30,7 @@ public class Sistema {
         }    
     }
     public void registrarDevolucion(int dniPrestamista, int isbnLibro) {
-        for (Prestamo prestamo:prestamos){
+        for (Prestamo prestamo:Prestamos){
             if (prestamo.getDniPrestamista() == dniPrestamista && prestamo.getIsbnLibro() == isbnLibro && prestamo.isVigencia()) {
                 prestamo.cancelado();
                 Libro libroDevuelto = buscarLibro(isbnLibro);
@@ -37,7 +38,7 @@ public class Sistema {
                     libroDevuelto.setDisponibilidad(true);
                 }
                 break;    
-             }
+            }
         }
     } 
     public void mostrarLibros() {
@@ -53,6 +54,14 @@ public class Sistema {
     public void mostrarPrestamos() {
         for (Prestamo prestamo : Prestamos) {
             System.out.println(prestamo);
+        }
+    }
+    public  void verificarDisponibilidad(int isbn) {
+        Libro libro = buscarLibro(isbn);
+        if (libro != null) {
+            libro.estaDisponible();
+        } else {
+            System.out.println("El libro con ISBN " + isbn + " no se encuentra registrado.");
         }
     }
 }
