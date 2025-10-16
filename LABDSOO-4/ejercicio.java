@@ -50,6 +50,7 @@ public class ejercicio {
     sistema.mostrarUsuarios();
     sistema.mostrarLibros();
 
+    System.out.println();
     do { 
     System.out.println("Bienvenido al sistema de prestamos");
     System.out.println("Elija una opción para continuar:");
