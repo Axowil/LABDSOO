@@ -13,6 +13,9 @@ public class Prestamo {
         this.isbnLibro = isbnLibro;
         this.vigencia = true;
     }
+    public Prestamo(int isbn, int dni, int i, int j, int k) {
+        //TODO Auto-generated constructor stub
+    }
     //Getters y Setters
     public void setDniPrestamista(int dniPrestamista) {this.dniPrestamista = dniPrestamista; }
     public void setIsbnLibro(int isbnLibro) {this.isbnLibro = isbnLibro; }
